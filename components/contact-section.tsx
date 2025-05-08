@@ -1,8 +1,5 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
 import { Mail, MapPin, Phone, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -10,35 +7,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent } from "@/components/ui/card"
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  })
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    const response = await fetch("https://formsubmit.co/ajax/batoumeniwildnis@gmail.com", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify(formData),
-    })
-  
-    if (response.ok) {
-      alert("Message envoyé avec succès !")
-      setFormData({ name: "", email: "", subject: "", message: "" })
-    } else {
-      alert("Erreur d'envoi.")
-    }
-  }
-
-
   return (
     <section id="contact" className="py-20 bg-white dark:bg-gray-900">
       <div className="container mx-auto px-4">
@@ -95,53 +63,33 @@ export default function ContactSection() {
 
           <div>
             <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-200">Envoyez-moi un Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-6">
+
+            {/* Important: Using method="POST" as required by FormSubmit.co */}
+            <form action="https://formsubmit.co/batoumeniwildnis@gmail.com" method="POST" className="space-y-6">
+              {/* FormSubmit.co configuration fields */}
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_next" value="https://tonsite.com/merci" />
+              <input type="hidden" name="_subject" value="Nouveau message de contact" />
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Nom
                   </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Votre nom"
-                    required
-                    className="w-full"
-                  />
+                  <Input id="name" name="name" placeholder="Votre nom" required className="w-full" />
                 </div>
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Email
                   </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Votre email"
-                    required
-                    className="w-full"
-                  />
+                  <Input id="email" name="email" type="email" placeholder="Votre email" required className="w-full" />
                 </div>
               </div>
               <div>
                 <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                   Sujet
                 </label>
-                <Input
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  placeholder="Sujet de votre message"
-                  required
-                  className="w-full"
-                />
+                <Input id="subject" name="subject" placeholder="Sujet de votre message" required className="w-full" />
               </div>
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
@@ -150,8 +98,6 @@ export default function ContactSection() {
                 <Textarea
                   id="message"
                   name="message"
-                  value={formData.message}
-                  onChange={handleChange}
                   placeholder="Votre message"
                   required
                   className="w-full min-h-[150px]"
