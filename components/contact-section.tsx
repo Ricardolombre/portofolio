@@ -22,14 +22,22 @@ export default function ContactSection() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically handle form submission
-    console.log("Form submitted:", formData)
-    // Reset form after submission
-    setFormData({ name: "", email: "", subject: "", message: "" })
-    alert("Message envoyé avec succès!")
+    const response = await fetch("https://formsubmit.co/ajax/batoumeniwildnis@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(formData),
+    })
+  
+    if (response.ok) {
+      alert("Message envoyé avec succès !")
+      setFormData({ name: "", email: "", subject: "", message: "" })
+    } else {
+      alert("Erreur d'envoi.")
+    }
   }
+
 
   return (
     <section id="contact" className="py-20 bg-white dark:bg-gray-900">
@@ -87,7 +95,7 @@ export default function ContactSection() {
 
           <div>
             <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-200">Envoyez-moi un Message</h3>
-            <form action="https://formsubmit.co/batoumeniwildnis@gmail.com" onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <input type="hidden" name="_captcha" value="false" />
               <input type="hidden" name="_next" value="https://tonsite.com/merci" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
