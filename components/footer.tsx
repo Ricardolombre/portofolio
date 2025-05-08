@@ -18,7 +18,7 @@ export default function Footer() {
             <a href="https://github.com/Ricardolombre" className="text-gray-400 hover:text-blue-500 transition-colors" aria-label="Github">
               <Github className="h-6 w-6" />
             </a>
-            <a href="https:/www.linkedin.com/in/wildnis-shade-rich-batoumeni" className="text-gray-400 hover:text-blue-500 transition-colors" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/wildnis-shade-rich-batoumeni" className="text-gray-400 hover:text-blue-500 transition-colors" aria-label="LinkedIn">
               <Linkedin className="h-6 w-6" />
             </a>
             <a
