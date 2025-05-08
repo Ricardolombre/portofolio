@@ -52,7 +52,7 @@ export default function HeroSection() {
               </Button>
             </a>
 
-            <a href="https:/www.linkedin.com/in/wildnis-shade-rich-batoumeni" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/wildnis-shade-rich-batoumeni" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" className="border-blue-400 text-blue-400 hover:bg-blue-950/50">
                 <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
               </Button>
