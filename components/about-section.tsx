@@ -13,7 +13,7 @@ export default function AboutSection() {
           <div>
             <h3 className="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-200">Qui suis-je ?</h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
-              Étudiant en troisième année de Génie logiciel, je suis passionné par l&apos;informatique et le
+              Étudiant en troisième année en Génie logiciel, je suis passionné par l&apos;informatique et le
               développement logiciel. Motivé, curieux et en quête d&apos;expérience professionnelle, je cherche à mettre
               en pratique mes compétences en programmation pour contribuer à des projets innovants.
             </p>
