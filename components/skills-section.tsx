@@ -12,6 +12,8 @@ export default function SkillsSection() {
         { name: "JavaScript", level: 75 },
         { name: "PHP", level: 80 },
         { name: "Python", level: 65 },
+        { name: "Flutter", level: 80 },
+        { name: "C", level: 70 },
         { name: "C++", level: 85 },
         { name: "C#", level: 65 },
       ],
@@ -32,6 +34,8 @@ export default function SkillsSection() {
       skills: [
         { name: "React", level: 80 },
         { name: "Node.js", level: 75 },
+        { name: "Django", level: 90 },
+        { name: "React Native", level: 80 },
         { name: "Qt-creator", level: 75 },
         { name: "Architecture MVC", level: 80 },
         { name: "Git/GitHub", level: 85 },
